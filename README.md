@@ -18,13 +18,18 @@
 
 ## 📌 Overview
 
-OBTClassic is a security and privacy tool from the OwlSec suite.
+OBTClassic analyzes Bluetooth Classic (BR/EDR) device-discovery data you have already collected. It decodes each device's Class-of-Device (major/minor type and service classes), parses EIR records and resolves the vendor from the OUI. It then flags devices that expose too much. It reads CSV files only and never scans, pairs with or transmits to any device.
 
 ---
 
 ## ✨ Features
 
-- Standalone executable, no Python installation needed.
+- Parses BR/EDR discovery CSVs (BDADDR, COD, Name, RSSI, EIR)
+- Decodes Class-of-Device: major/minor device class and service classes
+- EIR record parsing and OUI vendor lookup
+- Device enumeration, classification and exposure flags
+- Synthetic discovery-CSV generator for testing; findings graded A+ to F with MITRE ATT&CK mapping
+- Reports in TXT / JSON / Markdown / CSV / SARIF; exits with code 3 on CRITICAL/HIGH findings
 
 ---
 
@@ -38,8 +43,13 @@ OBTClassic is a security and privacy tool from the OwlSec suite.
 ## 🚀 Usage
 
 ```bash
-./OBTClassic
+./OBTClassic                                 # interactive menu
+./OBTClassic --analyze discovery.csv
+./OBTClassic --generate --out synth.csv
+./OBTClassic --demo
 ```
+
+Run `./OBTClassic --help` for the full list of options.
 
 ---
 
